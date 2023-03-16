@@ -13,8 +13,8 @@ class EvalModelEvaluator:
         self.Y_pred_train = Y_pred_train
         self.Y_pred_test = Y_pred_test
         self.ddd = ddd
-
-
+        
+    def evaluate(self):
         # Evaluate the model's performance on the training data
         train_mse = mean_squared_error(self.Y_train, self.Y_pred_train)
         train_r2 = r2_score(self.Y_train, self.Y_pred_train)
@@ -23,8 +23,7 @@ class EvalModelEvaluator:
         test_mse = mean_squared_error(self.Y_test, self.Y_pred_test)
         test_r2 = r2_score(self.Y_test, self.Y_pred_test)
         test_mae = mean_absolute_error(self.Y_test, self.Y_pred_test)
-        
-    def evaluate(self):
+
         print(f"Training Predictions({self.dataset_name}):\n{self.Y_pred_train}\n-----------------------------------------------\nTesting Predictions({self.dataset_name}):\n{self.Y_pred_test}\n\n\n---------------------------------\n")
         print(f"{self.model_name} MODEL EVALUATION FOR {self.dataset_name} DATASET:\nTrain MSE: {train_mse} Train R2: {train_r2} Train MAE: {train_mae}\nTest MSE: {test_mse} Test R2: {test_r2} Test MAE: {test_mae}\n")
         print(f"[EVALUATION OF {self.model_name} WITH {self.dataset_name} DATA: COMPLETE]\n")
